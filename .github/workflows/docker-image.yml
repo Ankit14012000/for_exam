@@ -20,7 +20,7 @@ jobs:
     - name: Scan for Vulnerabilities
       uses: anchore/scan-action@v2
       with:
-        image-name: nginx-pptexam:latest
+        image: nginx-pptexam:latest
     
       
     - name: Log in to Docker registry
