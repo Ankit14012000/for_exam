@@ -17,7 +17,8 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file dockerfile --tag nginx-pptexam:latest 
       
-    - uses: azure/container-scan@v0
+    - name: Scan for Vulnerabilities
+      uses: anchore/scan-action@v2
       with:
         image-name: nginx-pptexam:latest
     
