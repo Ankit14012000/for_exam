@@ -17,10 +17,14 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file dockerfile --tag nginx-pptexam:latest 
       
+    - name: Install Trivy
+      run: |
+          wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_{{ matrix.os }}-{{ matrix.arch }}.deb
+          sudo dpkg -i trivy_{{ matrix.os }}-{{ matrix.arch }}.deb
+
     - name: Scan for Vulnerabilities
-      uses: anchore/scan-action@v2
-      with:
-        image: nginx-pptexam:latest
+      run: |
+          trivy --exit-code 1 --severity HIGH,CRITICAL --no-progress ankit1400/nginx-pptexam
     
       
     - name: Log in to Docker registry
