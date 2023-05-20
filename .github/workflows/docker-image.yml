@@ -17,6 +17,11 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file dockerfile --tag nginx-pptexam:latest 
       
+    - uses: azure/container-scan@v0
+      with:
+        image-name: nginx-pptexam:latest
+    
+      
     - name: Log in to Docker registry
       uses: docker/login-action@v1
       with:
