@@ -17,6 +17,12 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file dockerfile --tag nginx-pptexam:latest 
       
+    - name: Test
+    - run: |
+        docker run -d -p 80:80 nginx-pptexam
+        docker inspect nginx-pptexam
+        curl http://localhost:80
+      
       
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
