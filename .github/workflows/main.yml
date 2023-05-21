@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - name: Set up Minikube 
+      run: minikube start
+      
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Apply kubernetes
+      run: |
+        kubectl apply -f nginx-deployment.yml
+        kubectl create -f service.yml
+    - name: Details
+      run: |
+        minikube service list
+        sleep 20
+        kubectl get deployment
+  
+          
