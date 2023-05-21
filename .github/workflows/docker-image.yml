@@ -36,7 +36,11 @@ jobs:
       run: |
         docker tag nginx-pptexam:latest ankit1400/nginx-pptexam
         docker push ankit1400/nginx-pptexam
-        
+    
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: dockerfile
         
         
       
