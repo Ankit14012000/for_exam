@@ -19,8 +19,7 @@ jobs:
       
     - name: Test
     - run: |
-        docker run -d -p 80:80 nginx-pptexam
-        docker inspect nginx-pptexam
+        docker run -d -p 80:80 nginx-pptexam:latest
         curl http://localhost:80
       
       
