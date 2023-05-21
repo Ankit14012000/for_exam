@@ -20,6 +20,7 @@ jobs:
     - name: Test before scan
       run: |
         docker run -d -p 8080:80 nginx-pptexam
+        ifconfig
         curl http://localhost:80
       
     - name: Run Trivy vulnerability scanner
