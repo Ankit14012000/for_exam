@@ -19,9 +19,10 @@ jobs:
       
     - name: Test before scan
       run: |
-        docker run -d -p 8080:80 nginx-pptexam
+        docker run -d nginx-pptexam -p 8080:80 nginx-pptexam
         docker ps -a
-        docker container inspect -f '{{ .NetworkSettings.IPAddress }}' nginx-pptexam
+        docker inspect nginx-pptexam
+        
       
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
