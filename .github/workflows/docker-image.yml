@@ -18,7 +18,7 @@ jobs:
       run: |
         docker build . --file dockerfile --tag nginx-pptexam:latest
         docker run -d -p 80:80 nginx-pptexam:latest
-        docker inspect nginx-pptexam
+        curl http://localhost:80
       
       
   
@@ -42,6 +42,7 @@ jobs:
       run: |
         docker tag nginx-pptexam:latest ankit1400/nginx-pptexam
         docker push ankit1400/nginx-pptexam
+        curl http://localhost:80
         
       
     
