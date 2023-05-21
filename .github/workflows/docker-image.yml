@@ -15,7 +15,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file dockerfile --tag nginx-pptexam:latest 
+      run: |
+        docker build . --file dockerfile --tag nginx-pptexam:latest
+        docker run -d -p 80:80 nginx-pptexam:latest
+        curl http://localhost:80
+      
       
   
       
