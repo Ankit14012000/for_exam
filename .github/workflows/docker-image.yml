@@ -21,7 +21,7 @@ jobs:
       run: |
         docker run -d -p 8080:80 nginx-pptexam
         docker ps -a
-        docker inspect 5b9
+        docker inspect nginx-pptexam  
       
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
